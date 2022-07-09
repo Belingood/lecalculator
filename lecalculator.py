@@ -9,6 +9,9 @@ setcontext(calc_context)
 
 
 class LECalculator:
+    """
+    The purpose of each method is described in detail in the test_lecalculator file.
+    """
 
     __OPERATORS = ('+', '-', '*', '/')
 

@@ -110,7 +110,8 @@ class TestLECalculator(unittest.TestCase):
 
     def test_006_max_deep_indexes(self):
         """
-
+        Testing a function that extracts the indexes of the deepest
+        level parentheses (whose content is evaluated first) from a mathematical expression.
         """
         e = None
         test_data = [('5+(17-(7+2.5))*(-2)', [6, 12]), ('5+(17-9.5)*(-2)', [2, 9, 11, 14])]
@@ -122,6 +123,10 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_007_is_first_minus_plus(self):
+        """
+        Testing a function that checks whether the first
+        character of an expression is plus or minus.
+        """
         e = None
         test_data = [('7+2.5', False), ('-7+2.5', True)]
         try:
@@ -132,6 +137,10 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_008_is_single_number(self):
+        """
+        Testing a function that checks if a string
+        is a single number or contains more than one number.
+        """
         e = None
         test_data = [('7+2.5', False), ('-7', True), ('+2.036', True)]
         try:
@@ -142,6 +151,11 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_009_instead_parentheses_result(self):
+        """
+        Testing a function that evaluates an expression inside parentheses.
+        It is assumed that the function takes as input an expression in parentheses
+        of the deepest level, which means that it does not contain other parentheses inside.
+        """
         e = None
         test_data = [('7+2.5', '9.5'), ('-7-3/2', '-8.5'), ('5*3-6/0*1', '15-{ZeroDivisionError}*1')]
         try:
@@ -152,6 +166,12 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_010_num_separated_operators(self):
+        """
+        Testing a function that separates operators and numbers and
+        puts them in a list as separate arguments. The function must be able
+        to distinguish between two adjacent signs, for example, to understand
+        which of the adjacent minuses is an operator, and which one refers to a number.
+        """
         e = None
         test_data = [('5*3-6/0*1', ['5', '*', '3', '-', '6', '/', '0', '*', '1']),
                      ('5+7.5*-2', ['5', '+', '7.5', '*', '-2'])]
@@ -163,6 +183,12 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_011_operators_finder(self):
+        """
+        Testing a function that takes an expression divided into operators
+        and numbers in the form of a list, as well as a pair of operators.
+        The function traverses the list from left to right and executes each
+        statement contained in the received pair only.
+        """
         e = None
         test_data = [(('*', '/', ['5', '+', '7.5', '*', '-2']), ['5', '+', '-15.0']),
                      (('+', '-', ['5', '+', '-15.0']), ['-10.0'])]
@@ -174,6 +200,11 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_012_action(self):
+        """
+        Testing a function that takes two numbers and one operator,
+        performing the action provided by the operator with the received numbers.
+        Note - the function uses the Decimal module for calculations.
+        """
         e = None
         test_data = [(('17', '9.5', '-'), '7.5'), (('7.5', '-2', '*'), '-15.0'),
                      (('6', '0', '/'), '{ZeroDivisionError}')]
@@ -185,6 +216,11 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_013_calculation(self):
+        """
+        Testing a function that takes an expression divided into operators
+        and numbers as a list to be passed to the operators_finder function.
+        All statements are expected to be executed and the result is a number in string format.
+        """
         e = None
         test_data = [(['5', '+', '7.5', '*', '-2'], '-10.0'),
                      (['5', '*', '3', '-', '6', '/', '0', '*', '1'], '15-{ZeroDivisionError}*1')]
@@ -196,6 +232,10 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_999999_report(self):
+        """
+        The function of writing test results to the database.
+        It is important that it is executed last, after all the tests have been executed.
+        """
         sql = """INSERT INTO test(test_name, test_is_successful, test_date, test_detail)
                      VALUES(%s, %s, %s, %s);"""
         conn = None
