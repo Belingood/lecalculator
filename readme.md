@@ -25,11 +25,11 @@ In this it is similar to the **eval** standard Python function, but unlike it, t
 
 ### Example
 
-> #### Expression: `"0.1 + 0.1 + 0.1"`
+> **Expression:** `"0.1 + 0.1 + 0.1"`
 > 
-> #### Eval result: `0.30000000000000004`
+> **Eval result:** `0.30000000000000004`
 > 
-> #### LECalculator result: `"0.3"`
+> **LECalculator result:** `"0.3"`
 
 ### Zero Division problem
 
@@ -45,9 +45,9 @@ However, it should be noted that the expression will not be returned in its orig
 
 ### Example
 
-> #### Expression: `"2 / (16 - (24 / 3) * 2) - 9 / (25 * 4)"`
+> **Expression:** `"2 / (16 - (24 / 3) * 2) - 9 / (25 * 4)"`
 > 
-> #### LECalculator result: `"{ZeroDivisionError}-9/100"`
+> **LECalculator result:** `"{ZeroDivisionError}-9/100"`
 
 ### Input validation and calculating
 
