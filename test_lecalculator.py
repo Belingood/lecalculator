@@ -8,6 +8,7 @@ from config import config
 
 from lecalculator import LECalculator, calc_context
 
+# Setting up and set the Decimal module context
 test_calc_context = Context(prec=12, rounding=ROUND_05UP, Emin=-99999999, Emax=99999999, capitals=0, clamp=1,
                             flags=[], traps=[InvalidOperation, DivisionByZero, Overflow])
 setcontext(test_calc_context)
@@ -38,6 +39,9 @@ class TestLECalculator(unittest.TestCase):
             raise e
 
     def test_001_get_data_method(self):
+        """
+        Testing a GET Request
+        """
         e = None
         user_data = json.dumps({'result': '10'})
         exp = '5+5'
@@ -78,6 +82,9 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_004_calculator(self):
+        """
+        Testing the main function that calculates the result.
+        """
         e = None
         test_data = [('-5+(2-1)*4.5',  '-0.5'), ('5/0', '{ZeroDivisionError}')]
         try:
@@ -88,6 +95,9 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_005_data_checker(self):
+        """
+        Testing a function that checks the input data for correctness.
+        """
         e = None
         test_data = [('+5-3/(2+4)*2.3', True), (128, False), (')123-(56+23)*3', False), ('1(23)-(56+23)*3', False),
                      ('.59-34+71', False), ('125-65+', False), ('*25-36', False), ('(12+(2+1)-4*(1-4)', False)]
@@ -99,6 +109,9 @@ class TestLECalculator(unittest.TestCase):
         self.__set_result(e=e)
 
     def test_006_max_deep_indexes(self):
+        """
+
+        """
         e = None
         test_data = [('5+(17-(7+2.5))*(-2)', [6, 12]), ('5+(17-9.5)*(-2)', [2, 9, 11, 14])]
         try:
