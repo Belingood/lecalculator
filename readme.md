@@ -37,9 +37,9 @@ Since this calculator is designed to work with rather long expressions, in the c
 
 ### Example
 
-> #### Expression: `"16 + 4 - 10 / 0 + 12 * 4"`
+> **Expression:** `"16 + 4 - 10 / 0 + 12 * 4"`
 > 
-> #### LECalculator result: `"16+4-{ZeroDivisionError}+12*4"`
+> **LECalculator result:** `"16+4-{ZeroDivisionError}+12*4"`
 
 However, it should be noted that the expression will not be returned in its original form, but in the calculated form up to the level at which the computational process was interrupted by the exception:
 
