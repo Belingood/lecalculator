@@ -25,7 +25,7 @@ In this it is similar to the **eval** standard Python function, but unlike it, t
 
 ### Example
 
-> #### Expression: `"0.1 + 0.1 + 0.1"`
+> **Expression:** `"0.1 + 0.1 + 0.1"`
 > 
 > #### Eval result: `0.30000000000000004`
 > 
