@@ -34,6 +34,13 @@ def calculator(expression: str):
 
 
 def set_result(date, is_success, exp, answer):
+    """
+    The function of entering the results of the calculation into the database.
+    :param date: Current date
+    :param is_success: Was the result successful
+    :param exp: Input expression
+    :param answer: Result
+    """
     sql = """INSERT INTO result(result_date, result_is_successful, result_expression, result_answer)
                          VALUES(%s, %s, %s, %s);"""
     conn = None

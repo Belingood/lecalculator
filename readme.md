@@ -156,3 +156,14 @@ Where **my-app** is your working domain or localhost.
 + To create database tables, use the command: `>>> python create_table.py`
 + To test the installed program, you can use the **FastAPI docs** by going to http://my-app/docs
 
+Sample content of **database.ini** file:
+
+> [postgresql]
+>
+> host=localhost
+>
+> database=calculator
+>
+> user=postgres
+>
+> password=123YourStrongPassword
